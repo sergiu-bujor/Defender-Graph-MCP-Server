@@ -3,7 +3,7 @@
 ## 1. Install Dependencies
 
 ```bash
-git clone https://github.com/<your-org-or-user>/defender-graph-security-mcp-server.git
+git clone https://github.com/sergiu-bujor/defender-graph-security-mcp-server.git
 cd defender-graph-security-mcp-server
 npm install
 npm run smoke
