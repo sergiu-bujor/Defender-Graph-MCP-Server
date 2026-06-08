@@ -1,0 +1,29 @@
+[project]
+name = "defender-graph-security-mcp-server"
+version = "0.1.0"
+description = "FastMCP server for Microsoft Defender XDR and Microsoft Graph Security incidents and alerts."
+authors = [{ name = "Sergiu Bujor" }]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "fastmcp==3.4.1",
+    "httpx>=0.28,<1.0",
+    "pydantic>=2.13.4,<3.0.0",
+    "aiofile>=3.11.1,<4.0.0",
+    "rpds-py>=2026.5.1,<2027.0.0",
+]
+
+[project.scripts]
+defender-graph-security-mcp = "defender_graph_mcp.server:main"
+smoke = "defender_graph_mcp.smoke:main"
+
+[tool.poetry]
+packages = [{ include = "defender_graph_mcp", from = "src" }]
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=9.0"
+
+[build-system]
+requires = ["poetry-core>=1.8.0"]
+build-backend = "poetry.core.masonry.api"

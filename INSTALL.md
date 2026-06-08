@@ -5,8 +5,8 @@
 ```bash
 git clone https://github.com/sergiu-bujor/defender-graph-security-mcp-server.git
 cd defender-graph-security-mcp-server
-npm install
-npm run smoke
+poetry install
+poetry run smoke
 ```
 
 ## 2. Configure Microsoft Graph Access
@@ -46,7 +46,7 @@ Admin consent is required for application permissions.
 Point the client at:
 
 ```bash
-node /path/to/defender-graph-security-mcp-server/src/index.js
+poetry --directory /path/to/defender-graph-security-mcp-server run defender-graph-security-mcp
 ```
 
 Use these environment variables:

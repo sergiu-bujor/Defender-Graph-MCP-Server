@@ -9,14 +9,14 @@ The server uses Microsoft Graph application authentication with the client crede
 ```bash
 git clone https://github.com/sergiu-bujor/defender-graph-security-mcp-server.git
 cd defender-graph-security-mcp-server
-npm install
-npm run smoke
+poetry install
+poetry run smoke
 ```
 
 Then configure your MCP client to run:
 
 ```bash
-node /path/to/defender-graph-security-mcp-server/src/index.js
+poetry --directory /path/to/defender-graph-security-mcp-server run defender-graph-security-mcp
 ```
 
 ## Authentication
@@ -213,9 +213,12 @@ JSON-style clients:
 {
   "mcpServers": {
     "defender-graph-security": {
-      "command": "node",
+      "command": "poetry",
       "args": [
-        "/path/to/defender-graph-security-mcp-server/src/index.js"
+        "--directory",
+        "/path/to/defender-graph-security-mcp-server",
+        "run",
+        "defender-graph-security-mcp"
       ],
       "env": {
         "MSGRAPH_TENANT_ID": "<tenant-id>",
@@ -232,8 +235,8 @@ TOML-style clients:
 
 ```toml
 [mcp_servers.defender-graph-security]
-command = "node"
-args = ["/path/to/defender-graph-security-mcp-server/src/index.js"]
+command = "poetry"
+args = ["--directory", "/path/to/defender-graph-security-mcp-server", "run", "defender-graph-security-mcp"]
 
 [mcp_servers.defender-graph-security.env]
 MSGRAPH_TENANT_ID = "<tenant-id>"
@@ -305,10 +308,10 @@ Close an incident:
 
 ## Manual Smoke Test
 
-From this folder after `npm install`:
+From this folder after `poetry install`:
 
 ```bash
-npm run smoke
+poetry run smoke
 ```
 
 With credentials configured, use `config_status` first, then try `list_security_incidents` with a small `top` value.
